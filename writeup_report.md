@@ -130,6 +130,6 @@ For the left and right images I added the following corrections to the steering 
 - `0.27`
 - `0.23`
 
-and included them from both data set in my sample. At the end my data set would have `27101` samples. I finally randomly shuffled the data set and put `20%` of the data into a validation set. 
+and included them from both data set in my sample. At the end my data set would have `27219` samples. I finally randomly shuffled the data set and put `20%` of the data into a validation set. 
 
 I used this training data for training the model. The validation set helped determine if the model was over or under fitting. Then I tried the run the trainer with 10 epochs, From the 7th epoch the model performance got worse so, I tried again with 7 epochs to avoid overfitting.
