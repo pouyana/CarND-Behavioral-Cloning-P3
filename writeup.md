@@ -35,6 +35,7 @@ My project includes the following files:
 * `video.mp4` a sample video of the given track with autonomous drive
 
 #### 2. Submission includes functional code
+
 Using the Udacity provided simulator and my drive.py file, the car can be driven autonomously around the track by executing:
 
 ```sh
@@ -115,20 +116,20 @@ The Udacity created data set had both normal driving behavior and recovery. This
 ![alt text][image3]
 ![alt text][image4]
 
-For my own data set creation I tried to do same. It includes good driving behavior and also recovery The data set includes onetime forward/backward run in both of the tracks. Having a backward run I generalized my model much better.
+For my own data set creation I tried to do the same. It includes good driving behavior and also recovery. The data set also includes one time forward/backward run in both of the tracks. With having a backward run I generalized my model much better.
 
 ![alt text][image6]
 ![alt text][image5]
 
 I also used the flipping feature with negative steering to have a larger data set. As the flipping was done on the fly, there is no image to see.
  
-Steering value of `0` which is for straight road happens much and weights on the whole data as clutter. I tried to remove it from the data set with 70% chance, to have more balanced data set. The result was better turning in the sharp curves.
+Steering value of `0` which is for straight road happens much and weights on the whole data as clutter. I tried to remove it from the data set with 70% chance, to have a more balanced data set. The result was better turning in the sharp curves.
 
 For the left and right images I added the following corrections to the steering value:
 
 - `0.27`
 - `0.23`
 
-and also included them from both data set. At the end my data set would have a `27101` samples. I finally randomly shuffled the data set and put `20%` of the data into a validation set. 
+and included them from both data set in my sample. At the end my data set would have `27101` samples. I finally randomly shuffled the data set and put `20%` of the data into a validation set. 
 
-I used this training data for training the model. The validation set helped determine if the model was over or under fitting. Then I tried the run the trainer with 10 epochs, From the 7th epoch the model performance got worse so, I tried again with 7 epochs.
+I used this training data for training the model. The validation set helped determine if the model was over or under fitting. Then I tried the run the trainer with 10 epochs, From the 7th epoch the model performance got worse so, I tried again with 7 epochs to avoid overfitting.
