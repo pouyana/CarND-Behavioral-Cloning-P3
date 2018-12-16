@@ -30,8 +30,8 @@ My project includes the following files:
 * `trainer.ipynb` The notebook containing the training information
 * `model.py` containing the script to create and train the model
 * `drive.py` for driving the car in autonomous mode
-* `nvidia_model_2.h5` containing a trained convolution neural network 
-* `writeup.md` summarizing the results
+* `model.h5` containing a trained convolution neural network 
+* `writeup_report.md` summarizing the results
 * `video.mp4` a sample video of the given track with autonomous drive
 
 #### 2. Submission includes functional code
