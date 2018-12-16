@@ -38,7 +38,7 @@ def load_samples(data_path,
         correct_right: float: The correction that should be applied for the right image
 
     Returns:
-        samples: list: The list of samples with only one image path and the value of stearing
+        samples: list: The list of samples with only one image path and the value of steering
     """
     csv_file_path = str(data_path) + str(csv_file_name)
     image_path = str(data_path) + "IMG/"
@@ -48,17 +48,17 @@ def load_samples(data_path,
             for i in range(3):
                 file_name = get_file_name(line[i])
                 file_path = str(image_path) + str(file_name)
-                basic_stearing = float(line[3])
+                basic_steering = float(line[3])
                 # Drop the streing that is negative or zero with probability of 0.7
-                if basic_stearing == 0 and np.random.rand() < drop_prob:
+                if basic_steering == 0 and np.random.rand() < drop_prob:
                     continue
                 data = [file_path]
                 if i == 0:
-                    data.append(basic_stearing)
+                    data.append(basic_steering)
                 if i == 1:
-                    data.append(basic_stearing + correction_left)
+                    data.append(basic_steering + correction_left)
                 if i == 2:
-                    data.append(basic_stearing - correction_right)
+                    data.append(basic_steering - correction_right)
                 samples.append(data)
     return samples
 
@@ -77,21 +77,21 @@ def read_image(image_path):
     return imageio.imread(image_path)
 
 
-def flip_image(image, basic_stearing):
+def flip_image(image, basic_steering):
     """
     Flips the image
 
     Args:
         image: list: The array like image or PIL image
-        basic_stearing: float: The basic stearing value
+        basic_steering: float: The basic steering value
 
     Returns:
         flipped_image: list: The array like image or PIL image
-        flipped_image_stearing: float: The basic stearing value for flipped image
+        basic_steering_flipped: float: The basic steering value for flipped image
     """
     image_flipped = np.fliplr(image)
-    basic_stearing_flipped = - basic_stearing
-    return image_flipped, basic_stearing_flipped
+    basic_steering_flipped = - basic_steering
+    return image_flipped, basic_steering_flipped
 
 
 def get_file_name(file_field=""):
@@ -138,9 +138,9 @@ def generator(samples, batch_size=32, with_flipped=True):
                 measurements.append(measurement)
                 # Flipped image
                 if with_flipped:
-                    flipped, stearing = flip_image(image, measurement)
+                    flipped, steering = flip_image(image, measurement)
                     images.append(flipped)
-                    measurements.append(stearing)
+                    measurements.append(steering)
 
             X_train = np.array(images)
             y_train = np.array(measurements)
